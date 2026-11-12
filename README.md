@@ -1,105 +1,50 @@
-# Task 1 – Spring Boot Greeting App
+# Task1_Java_Proj
 
-A simple web application built with **Spring Boot**, **Spring MVC** and **Thymeleaf**.
-It serves a greeting page that welcomes the user by name and shows an image.
+Task 1 for the Java course at Vistula University.
+Author: Danylo Kholodtsov, 76822
 
-Author: Danylo Kholodtsov (76822), Vistula University
+## About
 
-## Features
+This is a simple Spring Boot web application. It has one controller that shows a greeting page. The page says hello to the name you pass in the URL, and also shows some text and a picture.
 
-- `GET /greeting` returns an HTML page rendered by Thymeleaf
-- An optional `name` query parameter personalizes the greeting (the default is `World`)
-- A static image (`/images/k2.jpg`) is served from `src/main/resources/static`
+The project uses Java 25, Spring Boot 4.1.2, Spring MVC, Thymeleaf and Lombok. It is built with Maven, and the Maven wrapper is included, so you don't need to install Maven yourself.
 
-## Tech stack
-
-| Component      | Version / Details                    |
-|----------------|--------------------------------------|
-| Java           | 25                                   |
-| Spring Boot    | 4.1.2                                |
-| Web            | Spring MVC (`spring-boot-starter-webmvc`) |
-| Templates      | Thymeleaf                            |
-| Build tool     | Maven (Maven Wrapper included)       |
-| Other          | Lombok                               |
-
-## Project structure
-
-```
-src/
-├── main/
-│   ├── java/pl/edu/vistula/task1_java_proj/
-│   │   ├── Task1JavaProjApplication.java   # Application entry point
-│   │   └── controller/
-│   │       └── HelloController.java        # Handles the /greeting endpoint
-│   └── resources/
-│       ├── application.properties          # Application configuration
-│       ├── static/images/k2.jpg            # Static image shown on the page
-│       └── templates/greeting.html         # Thymeleaf view
-└── test/
-    └── java/pl/edu/vistula/task1_java_proj/
-        └── Task1JavaProjApplicationTests.java
-```
-
-## Requirements
-
-- JDK 25 or newer
-- No separate Maven installation is needed, because the project includes the Maven Wrapper (`mvnw` / `mvnw.cmd`)
+The request is handled by HelloController.java in src/main/java/pl/edu/vistula/task1_java_proj/controller. The page itself is greeting.html in src/main/resources/templates, and the picture is k2.jpg in src/main/resources/static/images.
 
 ## How to run
 
-1. Clone the repository:
+You need JDK 25 installed.
 
-   ```bash
-   git clone https://github.com/WaweLone/-Task1_Java_Proj.git
-   cd -- -Task1_Java_Proj
-   ```
+Clone the repository and go into the project folder, then start the app with the Maven wrapper.
 
-2. Start the application:
+On Windows:
 
-   **Linux / macOS**
-   ```bash
-   ./mvnw spring-boot:run
-   ```
+```
+mvnw.cmd spring-boot:run
+```
 
-   **Windows**
-   ```cmd
-   mvnw.cmd spring-boot:run
-   ```
+On Linux or macOS:
 
-   You can also open the project in IntelliJ IDEA and run `Task1JavaProjApplication`.
+```
+./mvnw spring-boot:run
+```
 
-3. The application starts on port **8080** by default.
+You can also open the project in IntelliJ IDEA and run the Task1JavaProjApplication class.
+
+The app starts on port 8080.
 
 ## How to use
 
-Open a browser and go to:
+Open http://localhost:8080/greeting in your browser. You will see "Hello, World!".
 
-| URL | Result |
-|-----|--------|
-| http://localhost:8080/greeting | Shows `Hello, World!` |
-| http://localhost:8080/greeting?name=Vistula | Shows `Hello, Vistula!` |
-| http://localhost:8080/greeting?name=Danylo | Shows `Hello, Danylo!` |
+To change the name, add the name parameter to the URL, for example http://localhost:8080/greeting?name=Vistula. The page will then show "Hello, Vistula!".
 
-The page shows the greeting, a short paragraph of text and an image.
+The controller takes the name from the URL (or uses World if there is no name), puts it into the model and returns the greeting view. Thymeleaf then puts the name into the page.
 
-## How it works
+## Tests
 
-1. A request to `/greeting` is handled by `HelloController.greeting(...)`.
-2. The controller reads the `name` request parameter (or uses `World` if it is missing) and adds it to the `Model`.
-3. The controller returns the view name `greeting`, so Spring renders `templates/greeting.html`.
-4. Thymeleaf puts the value into the page with `th:text="'Hello, ' + ${name} + '!'"`.
+To run the tests:
 
-## Building and testing
-
-Run the tests:
-
-```bash
-./mvnw test
 ```
-
-Build an executable JAR:
-
-```bash
-./mvnw clean package
-java -jar target/Task1_Java_Proj-0.0.1-SNAPSHOT.jar
+./mvnw test
 ```
