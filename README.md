@@ -48,5 +48,10 @@ To run the tests:
 ```
 ./mvnw test
 ```
-<img width="619" height="503" alt="image" src="https://github.com/user-attachments/assets/626dd153-40f1-493d-aa47-1d9c86d67723" />
+<img width="619" height="503" alt="image" src="https://github.com/user-attachments/assets/626dd153-40f1-493d-aa47-1d9c86d67723" /> - Default greeting
+<img width="653" height="406" alt="image" src="https://github.com/user-attachments/assets/6a58e92d-048b-4281-8a3a-f9d60745c580" /> - Custom greeting from the URL
+<img width="654" height="412" alt="image" src="https://github.com/user-attachments/assets/ed5298ad-ed91-4ecf-b2f1-20afadbc2e55" /> - Full name with a space 
+
+
+
 
