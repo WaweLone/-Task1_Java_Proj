@@ -48,3 +48,5 @@ To run the tests:
 ```
 ./mvnw test
 ```
+<img width="619" height="503" alt="image" src="https://github.com/user-attachments/assets/626dd153-40f1-493d-aa47-1d9c86d67723" />
+
